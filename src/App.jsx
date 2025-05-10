@@ -49,7 +49,7 @@ function AppWrapper() {
 
 function App() {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/projects/rede_social/">
         <AppWrapper />
         </BrowserRouter>
     );

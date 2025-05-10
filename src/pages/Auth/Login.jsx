@@ -14,11 +14,10 @@ import { login, reset } from '../../slices/authSlice';
 const Login = () => {
     
     const dispatch = useDispatch();
-    const {error} = useSelector(state => state.auth);
+    const {error, loading} = useSelector(state => state.auth);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [loading, setLoading] = useState(true);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,13 +30,12 @@ const Login = () => {
     
     useEffect( () => {
         dispatch(reset())
-        setTimeout(() => { setLoading(false) },100)
     }, [dispatch])
+
+    if (loading) return <Loading />;
 
     return (
         <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[#db2205] via-[#D55844]/40 to-[#D55844]/90'>
-            {loading && <Loading />}
-
             <div className='w-[450px] max-sm:w-[400px] bg-white/15 backdrop-blur-md border-2 border-white/20 p-10 rounded-lg'>
                 <header className='flex flex-col justify-center items-center mb-6'>
                     <img src="./logo.png" alt="" className='object-cover' />

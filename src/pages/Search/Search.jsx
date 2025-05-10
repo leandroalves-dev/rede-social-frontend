@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 //hooks
@@ -20,13 +20,10 @@ const Search = () => {
     const dispatch = useDispatch();
     const resetMessage = useReserComponentMessage(dispatch);
     const { user } = useSelector(state => state.auth);
-    const { photos } = useSelector(state => state.photo);
-
-    const [loading, setLoading] = useState(true);
+    const { photos, loading } = useSelector(state => state.photo);
    
     useEffect( () => {
         dispatch(searchPhotos(search))
-        setTimeout(() => { setLoading(false) },1000)
     }, [dispatch, search])
 
     
@@ -35,11 +32,12 @@ const Search = () => {
         resetMessage();
     }
 
+    if (loading) return <Loading />;
+
     return (
         <div className="bg-gray-100 pt-6 flex-grow">
             <div className='max-w-3xl mx-auto pb-10 px-6'>
                 <h2 className='text-neutral-700 text-lg mb-2'>Você está buscando por: <strong>{search}</strong></h2>
-                {loading && <Loading /> }
                 <>
                     {photos && photos.map(photo => (
                         <div key={photo._id} className='bg-white p-3'>

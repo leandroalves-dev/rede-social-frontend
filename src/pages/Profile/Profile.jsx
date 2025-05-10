@@ -29,19 +29,18 @@ const Profile = () => {
     const resetMessagePhoto = useReserComponentMessage(dispatch);
     const { user } = useSelector((state) => state.user);
     const { user: userAuth } = useSelector((state) => state.auth);
-    const {photos, message: messagePhoto, error: errorPhoto} = useSelector(state => state.photo);
+    const {photos, message: messagePhoto, error: errorPhoto, loading} = useSelector(state => state.photo);
 
     const [title, setTitle] = useState('');
     const [image, setImage] = useState('');
     const [editId, setEditId] = useState('');
     const [editImage, setEditImage] = useState('');
     const [editTitle, setEditTitle] = useState('');
-    const [loading, setLoading] = useState(true);
    
     useEffect(() => {
         dispatch(getUserDetails(id));
         dispatch(getUserPhotos(id));
-        setTimeout(() => { setLoading(false) },1000)
+       
     }, [dispatch, id]);
 
 
@@ -107,11 +106,12 @@ const Profile = () => {
     const handleCancelEdit = () => {
         hideOrShowForms();
     }
+
+    if (loading) return <Loading />;
         
     return (
         <div className="bg-gray-100 pt-6">
             <div className='max-w-3xl mx-auto px-6'>
-                {loading && <Loading /> }
                 <>
                     <div className="flex items-center">
                         <div className="w-32 mr-6">

@@ -13,13 +13,12 @@ import { register, reset } from '../../slices/authSlice';
 const Register = () => {
 
     const dispatch = useDispatch();
-	const {  error } = useSelector(state => state.auth);
+	const { error, loading } = useSelector(state => state.auth);
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
-    const [loading, setLoading] = useState(true);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -30,21 +29,18 @@ const Register = () => {
 			password,
 			confirmPassword
 		}
-
-		console.log(user);
+		
 		dispatch(register(user))
 	}
 	
 	useEffect( () => {
 		dispatch(reset());
-        setTimeout(() => { setLoading(false) },100)
 	}, [dispatch]);
+
+    if (loading) return <Loading />;
 
 	return (
         <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-[#db2205] via-[#D55844]/40 to-[#D55844]/90'>
-            
-            {loading && <Loading />}
-            
             <div className='w-[450px] max-sm:w-[400px] bg-white/15 backdrop-blur-md border-2 border-white/20 p-10 rounded-lg'>
                 <header className='flex flex-col justify-center items-center mb-6'>
                     <img src="./logo.png" alt="" className='object-cover' />

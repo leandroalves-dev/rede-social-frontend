@@ -22,14 +22,12 @@ const Photo = () => {
     const dispatch = useDispatch();
     const resetMessage = useReserComponentMessage(dispatch);
     const { user } = useSelector((state) => state.auth);    
-    const { photo, error, message } = useSelector((state) => state.photo);
+    const { photo, error, message, loading } = useSelector((state) => state.photo);
 
     const [commentText, setCommentText] = useState();
-    const [loading, setLoading] = useState(true);
     
     useEffect( () => {
         dispatch(getPhoto(id));
-        setTimeout(() => { setLoading(false) },1000)
     },[dispatch, id])
 
      
@@ -52,12 +50,11 @@ const Photo = () => {
         resetMessage();
     }
 
+    if (loading) return <Loading />;
+
     return (
         <div className="bg-gray-100 pt-6">
             <div className='max-w-3xl mx-auto px-6'>
-
-                {loading && <Loading />}
-
                 <div className='text-neutral-700 gap-3 text-sm bg-white p-3'>
                     <PhotoItem photo={photo} />
                     <LikeContainer photo={photo} user={user} handleLike={handleLike} /> 

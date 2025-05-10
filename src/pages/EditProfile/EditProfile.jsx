@@ -73,11 +73,10 @@ const EditProfile = () => {
         setProfileImage(image);
     }
 
+    if (loading) return <Loading />;
+
     return (
         <div className="bg-gray-100 pt-6">
-
-            {loading && <Loading />}
-
             <div className='max-w-3xl mx-auto px-6'>
                 <div className='flex flex-col justify-center items-center'>
                     <h2 className='text-neutral-700 text-lg'>Edite seu dados</h2>

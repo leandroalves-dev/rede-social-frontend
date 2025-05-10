@@ -33,6 +33,8 @@ const login = async(data) => {
         console.log("Email e senha são obrigatórios.");
         return;
     }
+
+    console.log("API URL:", api);
     
     const config = requestConfig('POST', data); 
     try {
