@@ -35,7 +35,7 @@ const Search = () => {
     if (loading) return <Loading />;
 
     return (
-        <div className="bg-gray-100 pt-6 flex-grow">
+        <div className="bg-gray-100 pt-6">
             <div className='max-w-3xl mx-auto pb-10 px-6'>
                 <h2 className='text-neutral-700 text-lg mb-2'>Você está buscando por: <strong>{search}</strong></h2>
                 <>

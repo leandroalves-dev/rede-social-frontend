@@ -33,15 +33,17 @@ function AppWrapper() {
     return (
         <div className='min-h-screen flex flex-col'>
             {!hideHeaderFooter && <Navbar />}
-                <Routes>
-                    <Route path='/' element={auth ? <Home /> : <Navigate to="/login" />} />
-                    <Route path='/profile' element={auth ? <EditProfile /> : <Navigate to="/login" />} />
-                    <Route path='/users/:id' element={auth ? <Profile /> : <Navigate to="/login" />} />
-                    <Route path='/login' element={!auth ? <Login /> : <Navigate to="/" />} />
-                    <Route path='/register' element={!auth ? <Register /> : <Navigate to="/" />} />
-                    <Route path='/search' element={auth ? <Search /> : <Navigate to="/login" />} />
-                    <Route path='/photos/:id' element={auth ? <Photo /> : <Navigate to="/login" />} />
-                </Routes>
+                <main className="flex-1">
+                    <Routes>
+                        <Route path='/' element={auth ? <Home /> : <Navigate to="/login" />} />
+                        <Route path='/profile' element={auth ? <EditProfile /> : <Navigate to="/login" />} />
+                        <Route path='/users/:id' element={auth ? <Profile /> : <Navigate to="/login" />} />
+                        <Route path='/login' element={!auth ? <Login /> : <Navigate to="/" />} />
+                        <Route path='/register' element={!auth ? <Register /> : <Navigate to="/" />} />
+                        <Route path='/search' element={auth ? <Search /> : <Navigate to="/login" />} />
+                        <Route path='/photos/:id' element={auth ? <Photo /> : <Navigate to="/login" />} />
+                    </Routes>
+                </main>
             {!hideHeaderFooter && <Footer />}
         </div>
     );
