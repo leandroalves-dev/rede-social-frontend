@@ -19,6 +19,15 @@ Este é o frontend da aplicação de rede social, desenvolvido com React, utiliz
 -  Interface responsiva
 -  Proteção de rotas com autenticação
 
+**Demonstração do projeto**
+
+<img width="400" height="200" alt="Image" src="https://github.com/user-attachments/assets/695b7dd6-1728-4b61-85c4-752fb2109b1a" />
+<img width="400" height="200" alt="Image" src="https://github.com/user-attachments/assets/4c5ab905-fdcd-4194-9eac-627939715516" />
+<img width="400" height="200" alt="Image" src="https://github.com/user-attachments/assets/0fd5ca22-8336-44ff-8893-91b04f581b62" />
+<img width="400" height="200" alt="Image" src="https://github.com/user-attachments/assets/5b290735-7bc4-4ce8-8782-dbd94c3a4d72" />
+<img width="400" height="200" alt="Image" src="https://github.com/user-attachments/assets/389ccae5-8069-496e-adf8-1d57c54bda72" />
+<img width="400" height="200" alt="Image" src="https://github.com/user-attachments/assets/91b83841-7ef1-41b0-b8c6-ec4c47946925" />
+
 ## Como rodar o projeto
 
 1. Clone este repositório:
